@@ -1,0 +1,83 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-weight: 900;
+  font-family: Montserrat, sans-serif;
+}
+
+// &, *{
+//     cursor: none;
+// }
+
+.shapes {
+  position: relative;
+  height: 75vh;
+  width: 100vw;
+  background-image: radial-gradient(rgb(150, 150, 150), rgb(255, 255, 255));
+  overflow: hidden;
+
+  .shape {
+    will-change: transform;
+    position: absolute;
+    border-radius: 50%;
+
+    $shapes: (
+      #925c37: 600px,
+      #b5895a: 460px,
+      #e4bc8e: 220px,
+    );
+
+    @each $color, $size in $shapes {
+      &.shape-#{index($shapes, ($color $size))} {
+        background: $color;
+        width: $size;
+        height: $size;
+        margin: (-$size/2) 0 0 (-$size/2);
+      }
+    }
+  }
+
+  .content {
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    left: 0;
+    height: 70vh;
+    width: 100vw;
+    background-color: rgb(250, 250, 250);
+    mix-blend-mode: screen;
+    text-align: center;
+    font-size: 10vmin;
+    line-height: 20vmin;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .content p{
+    font-size: 16px;
+    margin: 0 50px;
+    line-height: 20px;
+    font-family: poppins;
+    max-width: 800px;
+    color: rgb(0, 0, 0);
+  }
+
+  .content h1{
+    margin: 50px;
+  }
+
+  @media only screen and (max-width: 500px) {
+    .content {
+      font-size: 15vmin;
+      line-height: 30vmin;
+    }    
+
+    .content p{
+        position: relative;
+        top : -30px;
+        font-size: 14px;
+    }
+  }
+}
